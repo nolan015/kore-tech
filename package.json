@@ -2,6 +2,9 @@
   "name": "kore-tech-livraison",
   "version": "1.0.0",
   "type": "module",
+  "scripts": {
+    "build": "echo 'Pas de build necessaire'"
+  },
   "dependencies": {
     "@netlify/blobs": "^2.0.0",
     "resend": "^3.0.0",
