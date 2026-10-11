@@ -1,0 +1,10 @@
+{
+  "name": "kore-tech-livraison",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@netlify/blobs": "^2.0.0",
+    "resend": "^3.0.0",
+    "stripe": "^14.0.0"
+  }
+}

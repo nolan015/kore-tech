@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kore Tech – Réparation & PC sur mesure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F6F8;--surf:#fff;--ink:#0D1424;--mut:#5B6478;--line:#E1E4EB;--acc:#1F5BFF;--acc2:#E8EEFF;--ok:#0E9F6E;--warn:#C27803;--bad:#D33;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1020;--surf:#131A2E;--ink:#EEF1F8;--mut:#9AA4BC;--line:#243050;--acc:#4C82FF;--acc2:#1A2647}}
+:root[data-theme="dark"]{--bg:#0B1020;--surf:#131A2E;--ink:#EEF1F8;--mut:#9AA4BC;--line:#243050;--acc:#4C82FF;--acc2:#1A2647}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 Manrope,system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque',Manrope,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2.3rem,7vw,4.2rem);font-weight:800}h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:700}h3{font-size:1.1rem;font-weight:700}
+p{margin:0}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}.sec{padding:56px 0}.mut{color:var(--mut)}
+svg.i{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em;flex:none}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;height:64px}
+.logo{font:800 1.3rem 'Bricolage Grotesque';display:flex;gap:8px;align-items:center}.logo b{background:var(--acc);color:#fff;border-radius:9px;width:32px;height:32px;display:grid;place-items:center}
+nav.m{margin-left:auto;display:flex;gap:4px;align-items:center}nav.m a{padding:8px 12px;border-radius:9px;font-weight:600;color:var(--mut)}nav.m a.on,nav.m a:hover{color:var(--ink);background:var(--surf)}
+.burger{display:none;margin-left:auto}
+@media(max-width:760px){.burger{display:inline-flex}nav.m{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--bg);padding:12px 20px;border-bottom:1px solid var(--line)}nav.m.open{display:flex}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:var(--surf);padding:11px 18px;border-radius:11px;font-weight:700;cursor:pointer;min-height:44px;transition:transform .15s}
+.btn:active{transform:scale(.97)}.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}.btn.lg{padding:15px 26px;font-size:1.05rem}.btn.sm{min-height:34px;padding:5px 11px;font-size:.88rem}.btn.d{color:var(--bad)}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:20px}
+.grid{display:grid;gap:16px}.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.g5{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.hero{padding:48px 0 32px;display:grid;gap:40px;align-items:center}@media(min-width:900px){.hero{grid-template-columns:1.15fr .85fr;padding-top:80px}}
+.hero p.lead{font-size:1.15rem;color:var(--mut);margin:20px 0 28px;max-width:52ch}
+.ticket{background:var(--ink);color:var(--bg);border-radius:20px;padding:24px;position:relative;box-shadow:0 20px 50px -20px rgba(31,91,255,.5)}
+.ticket .row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,.2)}.ticket .big{font:800 2.6rem 'Bricolage Grotesque';color:#7FA3FF}
+.pill{display:inline-flex;gap:6px;align-items:center;padding:3px 10px;border-radius:99px;font-size:.8rem;font-weight:700;background:var(--acc2);color:var(--acc)}
+.rep{display:flex;gap:14px;align-items:flex-start}.ico{width:44px;height:44px;border-radius:12px;background:var(--acc2);color:var(--acc);display:grid;place-items:center;flex:none;font-size:1.2rem}
+.trust{background:var(--ink);color:var(--bg);border-radius:18px;padding:24px;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.trust div{display:flex;gap:12px;align-items:center;font-weight:600}.trust svg{color:#7FA3FF;font-size:1.5rem}
+.steps{display:flex;gap:6px;margin:0 0 24px}.steps i{flex:1;height:5px;border-radius:9px;background:var(--line)}.steps i.on{background:var(--acc)}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;width:100%;cursor:pointer;padding:16px}.opt:hover{border-color:var(--acc)}.opt small{display:block;color:var(--mut)}.opt .pr{margin-left:auto;font-weight:800}
+.ltr{width:40px;height:40px;border-radius:50%;background:var(--acc2);color:var(--acc);display:grid;place-items:center;font-weight:800}
+.res{border:2px solid var(--acc)}.res .price{font:800 3rem 'Bricolage Grotesque'}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}input,select,textarea{width:100%;background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px}.tools input{flex:1 1 220px;width:auto}.tools select{width:auto;flex:0 0 auto}
+.prod .img{aspect-ratio:4/3;border-radius:12px;background:var(--acc2);display:grid;place-items:center;font-size:2.6rem;color:var(--acc);margin-bottom:12px;overflow:hidden}.prod .img img{width:100%;height:100%;object-fit:cover}
+.prod{cursor:pointer;display:flex;flex-direction:column;gap:6px}.prod .pr{font:800 1.3rem 'Bricolage Grotesque';margin-top:auto}
+.tag{font-size:.75rem;font-weight:700;padding:2px 9px;border-radius:99px;display:inline-block}.t-Neuf{background:#DFF6EA;color:#0A6B49}.t-Reconditionné{background:#FFF1D6;color:#8A5A00}
+.s-attente{background:#FFF1D6;color:#8A5A00}.s-cours{background:#E0E9FF;color:#1B47C9}.s-pret{background:#DFF6EA;color:#0A6B49}.s-termine{background:#E9EBF0;color:#4A5264}
+.adm{display:grid;gap:20px;padding:24px 0}@media(min-width:860px){.adm{grid-template-columns:210px 1fr}}
+.side{display:flex;gap:6px;overflow-x:auto}@media(min-width:860px){.side{flex-direction:column}}.side button{text-align:left;white-space:nowrap;border:0;background:none;padding:11px 14px;border-radius:10px;font-weight:600;cursor:pointer;color:var(--mut);display:flex;gap:10px;align-items:center}.side button.on{background:var(--acc2);color:var(--acc)}
+.kpi b{display:block;font:800 2rem 'Bricolage Grotesque'}.tbl{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:560px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);font-size:.93rem}th{color:var(--mut);font-weight:600}
+.bars div{display:flex;align-items:center;gap:10px;margin:10px 0}.bars span{flex:0 0 120px;font-size:.9rem}.bars em{height:10px;border-radius:9px;background:var(--acc);display:block}
+.modal{position:fixed;inset:0;background:rgba(5,10,25,.6);display:grid;place-items:center;padding:16px;z-index:50}.modal>.card{width:100%;max-width:480px;max-height:90vh;overflow:auto}
+.fld{margin-bottom:12px}.fld label{display:block;font-weight:600;font-size:.88rem;margin-bottom:4px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;z-index:60;font-weight:600}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:.9rem}
+.opt:disabled{opacity:.45;cursor:not-allowed}.opt:disabled:hover{border-color:var(--line)}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;padding-bottom:4px}.tab{white-space:nowrap;border:1px solid var(--line);background:var(--surf);border-radius:99px;padding:8px 14px;font-weight:600;cursor:pointer;display:flex;gap:6px;align-items:center}.tab.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.pcg{display:grid;gap:20px}@media(min-width:960px){.pcg{grid-template-columns:1.1fr .9fr;align-items:start}.pcs{position:sticky;top:84px}}
+.c3d{aspect-ratio:1/1;border-radius:12px;background:#0B1020;margin-bottom:8px;overflow:hidden;touch-action:pan-y}.c3d canvas{width:100%!important;height:100%!important;display:block;cursor:grab}
+.sumr{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.warn{background:#FFF1D6;color:#8A5A00;border-radius:10px;padding:10px 12px;font-size:.88rem;margin-top:10px}
+.bnr{background:var(--ink);color:var(--bg);border-radius:18px;padding:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:40px}.bnr h2{max-width:20ch}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+<a class="logo" href="#/"><b>K</b>Kore Tech</a>
+<button class="btn sm burger" id="bg" aria-label="Menu">☰</button>
+<nav class="m" id="nav"><a href="#/" data-r="">Accueil</a><a href="#/devis" data-r="devis">Réparation</a><a href="#/pc" data-r="pc">PC sur mesure</a><a href="#/boutique" data-r="boutique">Boutique</a><a href="#/admin" data-r="admin">Espace pro</a><a class="btn p sm" href="#/devis">Estimer</a></nav>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap">© 2026 Kore Tech – Réparation sur place ou par correspondance. Données de démonstration.</div></footer>
+<div id="layer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============ ARCHITECTURE ============
+ 1. Données (mock) + persistance localStorage  2. Utilitaires/icônes
+ 3. Vues client : home, devis (wizard), boutique   4. Vues admin : login, dashboard, CRUD, demandes
+ 5. Routeur par hash + délégation d'événements
+ Pour un vrai déploiement : remplacer DB par une API (Next.js + Prisma) et l'auth par NextAuth. */
+
+/* ---------- 1. DONNÉES ---------- */
+/* Smartphones : "modèle:prix de base écran (€)". Aucun Google Pixel. Modèles supplémentaires : Admin > Réparations. */
+const SPEC={
+Apple:['','iPhone 16 Pro Max:330,iPhone 16 Pro:290,iPhone 16 Plus:240,iPhone 16:210,iPhone 15 Pro Max:290,iPhone 15 Pro:250,iPhone 15 Plus:210,iPhone 15:190,iPhone 14 Pro Max:260,iPhone 14 Pro:230,iPhone 14 Plus:170,iPhone 14:150,iPhone 13 Pro Max:200,iPhone 13 Pro:180,iPhone 13:140,iPhone 13 mini:130,iPhone 12 Pro Max:170,iPhone 12 Pro:150,iPhone 12:130,iPhone 12 mini:110,iPhone 11 Pro Max:130,iPhone 11 Pro:120,iPhone 11:80,iPhone XS Max:110,iPhone XS:95,iPhone XR:75,iPhone X:95,iPhone SE (2022):70,iPhone SE (2020):60,iPhone 8 Plus:60,iPhone 8:50,iPhone 7:45'],
+Samsung:['Galaxy ','S24 Ultra:290,S24+:230,S24:200,S23 Ultra:250,S23+:190,S23:170,S22 Ultra:210,S22+:160,S22:140,S21 Ultra:180,S21+:140,S21:120,S21 FE:100,S20 FE:95,Note 20 Ultra:190,Z Fold5:400,Z Flip5:260,A55:100,A54:90,A53:85,A52:80,A35:80,A34:75,A33:70,A25:65,A15:55,A14:50,A13:50,M54:85'],
+Xiaomi:['Xiaomi ','14 Ultra:250,14:200,13T Pro:170,13T:140,13 Pro:190,13:150,12T Pro:150,12:130,11T Pro:110,Mi 11 Lite:80'],
+Redmi:['Redmi ','Note 13 Pro+:110,Note 13 Pro:95,Note 13:75,Note 12 Pro:85,Note 12:65,Note 11:60,12:55,13C:50,A3:45'],
+Poco:['Poco ','F6:120,X6 Pro:100,X5 Pro:90,X5:85,M6:60'],
+OnePlus:['OnePlus ','12:230,12R:170,11:200,10 Pro:170,9:130,Nord 4:130,Nord 3:120,Nord CE 3 Lite:80'],
+Oppo:['Oppo ','Find X7 Ultra:250,Find X6 Pro:210,Reno 11 Pro:140,Reno 11:120,Reno 10:110,A98:85,A78:75,A58:65'],
+Huawei:['Huawei ','P60 Pro:220,P50 Pro:200,P40 Pro:170,P30 Pro:140,P30:100,P30 Lite:70,Mate 50 Pro:230,Mate 20 Pro:130,Nova 11:110,Nova 9:95'],
+Honor:['Honor ','Magic6 Pro:230,Magic5 Pro:210,200 Pro:150,90:130,70:110,X8b:70'],
+Realme:['Realme ','GT 5 Pro:160,GT 3:140,12 Pro+:130,11 Pro:110,Narzo 60:70,C67:60,C55:55'],
+Motorola:['Motorola ','Edge 40:140,Edge 30:120,Razr 40:230,Moto G84:75,Moto G73:70,Moto G54:70'],
+Nothing:['Nothing ','Phone (2):150,Phone (2a):110,Phone (1):120'],
+Vivo:['Vivo ','X100 Pro:200,V30:120,Y36:60'],
+Sony:['Sony ','Xperia 1 V:230,Xperia 5 V:190,Xperia 10 V:110']};
+const MODELS={};for(const b in SPEC){const[pf,l]=SPEC[b];MODELS[b]=l.split(',').map(x=>{const[n,v]=x.split(':');return[pf+n,+v]})}
+const TYPES=[['Écran OLED / LCD',1,45,'Dalle neuve, film de protection offert.'],['Batterie',.3,30,'Batterie neuve, santé 100 %.'],['Connecteur de charge',.25,45,'Nettoyage ou remplacement du port.'],['Caméra arrière',.35,40,'Module photo neuf, test complet.'],['Vitre arrière',.3,50,'Remplacement de la vitre arrière.'],['Désoxydation',.2,120,'Nettoyage ultrasons après contact avec un liquide.']];
+
+/* PC : catalogue. Colonnes par catégorie (COLS), valeurs séparées par | ; prix d'achat fournisseur en €. */
+const CATS=[['cpu','Processeur'],['mb','Carte mère'],['ram','Mémoire RAM'],['gpu','Carte graphique'],['ssd','Stockage'],['case','Boîtier'],['psu','Alimentation'],['cool','Refroidissement']];
+const COLS={cpu:'name,buy,sock,tdp',mb:'name,buy,sock,ddr,ff',ram:'name,buy,ddr',gpu:'name,buy,len,tdp,rgb',ssd:'name,buy',case:'name,buy,ff,gpuMax,coolMax,rad,rgb',psu:'name,buy,w',cool:'name,buy,type,h,rad'};
+const NUM=new Set(['buy','tdp','len','gpuMax','coolMax','rad','w','h']);
+const SEL={sock:['AM4','AM5','LGA1700'],ddr:['DDR4','DDR5'],ff:['ITX','mATX','ATX'],type:['air','aio']};
+const LBL={sock:'Socket',tdp:'Consommation (W)',ddr:'Type de mémoire',ff:'Format',len:'Longueur (mm)',rgb:'Couleur RGB',gpuMax:'Longueur GPU max (mm)',coolMax:'Hauteur ventirad max (mm)',rad:'Radiateur (mm)',w:'Puissance (W)',type:'Type',h:'Hauteur (mm)'};
+const RAW={
+cpu:'Ryzen 5 5600|125|AM4|65;Ryzen 7 5700X|179|AM4|65;Ryzen 5 7600|199|AM5|65;Ryzen 7 7800X3D|369|AM5|120;Ryzen 9 7950X|529|AM5|170;Core i5-12400F|129|LGA1700|65;Core i5-14600K|289|LGA1700|125;Core i7-14700K|399|LGA1700|125;Core i9-14900K|529|LGA1700|253',
+mb:'MSI B550 Gaming Plus|119|AM4|DDR4|ATX;Gigabyte B550M DS3H|89|AM4|DDR4|mATX;MSI B650M Mortar|159|AM5|DDR5|mATX;ASUS TUF B650-Plus|179|AM5|DDR5|ATX;Gigabyte X670 Aorus Elite|289|AM5|DDR5|ATX;ASUS Prime B760M-A|129|LGA1700|DDR4|mATX;MSI B760 Gaming Plus|159|LGA1700|DDR5|ATX;MSI Z790 Tomahawk|289|LGA1700|DDR5|ATX;Gigabyte B760I Aorus Pro|199|LGA1700|DDR5|ITX',
+ram:'Kingston Fury 16 Go DDR4 3200|39|DDR4;Kingston Fury 32 Go DDR4 3600|69|DDR4;Corsair Vengeance 16 Go DDR5 6000|69|DDR5;Corsair Vengeance 32 Go DDR5 6000|129|DDR5;G.Skill Trident Z5 64 Go DDR5 6000|249|DDR5',
+gpu:'RTX 4060 8 Go|299|240|115|#76b900;RTX 4060 Ti 8 Go|389|250|160|#76b900;RTX 4070 Super 12 Go|619|285|220|#76b900;RTX 4080 Super 16 Go|1029|336|320|#76b900;RTX 4090 24 Go|1899|358|450|#76b900;RX 7600 8 Go|269|240|165|#ed1c24;RX 7800 XT 16 Go|489|290|263|#ed1c24;RX 7900 XTX 24 Go|929|287|355|#ed1c24',
+ssd:'Crucial P3 500 Go NVMe|45;WD Black SN850X 1 To NVMe|89;Samsung 990 Pro 2 To NVMe|179;Crucial MX500 1 To SATA|69;Seagate Barracuda 2 To HDD|59',
+case:'Fractal Pop Mini Air|89|mATX|337|170|280|#ffb300;Cooler Master NR200P|99|ITX|330|155|280|#00ff9d;NZXT H5 Flow|94|ATX|365|165|280|#ffffff;Corsair 4000D Airflow|104|ATX|360|170|360|#ff2d55;Lian Li Lancool 216 RGB|109|ATX|392|180|360|#00e5ff;Phanteks Eclipse G360A|99|ATX|400|162|360|#9b5cff',
+psu:'Corsair CV550 550 W|59|550;Corsair RM650e 650 W|89|650;Seasonic Focus 750 W Gold|119|750;Corsair RM850x 850 W|149|850;be quiet! Dark Power 1000 W|249|1000',
+cool:'Thermalright Peerless Assassin 120|39|air|155|0;be quiet! Dark Rock 4|75|air|159|0;Noctua NH-D15|109|air|165|0;Arctic Liquid Freezer III 240|99|aio|0|240;NZXT Kraken 280|159|aio|0|280;Corsair iCUE H150i 360|219|aio|0|360'};
+
+/* Sources de prix par pièce (démo : 4 sources autour du prix d'achat). En production : alimentées par votre flux ou une API serveur. */
+const SRC=['Fournisseur A','Fournisseur B','Boutique C','Comparateur D'];
+const mkSrc=b=>SRC.map((n,i)=>({n,p:Math.round(b*(1+[-.03,.02,.05,-.01][i])*100)/100,t:Date.now()}));
+/* Historique des estimations (1 point / mise à jour) : sert aux tendances et à l'alerte de variation */
+const mkHist=b=>Array.from({length:14},(_,i)=>({t:Date.now()-(13-i)*864e5,e:Math.round(b*(1+Math.sin(i*1.1+b%7)*.03)*100)/100}));
+const snap=x=>{x.hist.push({t:Date.now(),e:est(x)||x.buy});if(x.hist.length>60)x.hist.shift()};
+const trend=x=>{const h=x.hist,a=h[Math.max(0,h.length-8)].e;return(h[h.length-1].e-a)/a*100};
+const pf=c=>COLS[c].split(',').slice(2).map(k=>({k,l:LBL[k],t:NUM.has(k)?'number':k==='rgb'?'color':SEL[k]?'select':'text',o:SEL[k]}));
+const seed=()=>{let id=1;const repairs=[];for(const b in MODELS)MODELS[b].forEach(([d,base])=>TYPES.forEach(([t,m,time,desc])=>repairs.push({id:id++,device:d,type:t,price:Math.max(49,Math.round(base*m/5)*5),pc:Math.max(35,Math.round(base*m*.7/5)*5),po:Math.max(69,Math.round(base*m*1.35/5)*5),time,desc})));
+let n=1;const parts=[];for(const c in RAW)RAW[c].split(';').forEach(r=>{const v=r.split('|'),o={id:n++,cat:c,stock:12,mg:null};COLS[c].split(',').forEach((k,i)=>o[k]=NUM.has(k)?+v[i]:v[i]);o.src=mkSrc(o.buy);o.hist=mkHist(o.buy);parts.push(o)});
+const products=[['Coque MagSafe transparente',29,40,'Accessoires','Neuf','📱'],['Chargeur USB-C 30 W',24,65,'Accessoires','Neuf','🔌'],['Verre trempé 9H (x2)',12,120,'Accessoires','Neuf','🛡️'],['iPhone 13 128 Go',449,4,'Smartphones','Reconditionné','📱'],['Galaxy S22 128 Go',329,3,'Smartphones','Reconditionné','📱'],['MacBook Air M1 256 Go',759,2,'Ordinateurs','Reconditionné','💻'],['Clavier mécanique sans fil',89,14,'Périphériques','Neuf','⌨️','Switchs Gateron, Bluetooth et USB-C, rétroéclairage, autonomie 3 mois.'],['Souris gaming 12 000 dpi',39,30,'Périphériques','Neuf','🖱️','Capteur précis, 6 boutons programmables, 60 g.'],['Écran 27" QHD 165 Hz',279,6,'Périphériques','Neuf','🖥️','Dalle IPS 1 ms, FreeSync / G-Sync compatible, HDMI et DisplayPort.'],['SSD externe 1 To USB-C',99,18,'Stockage','Neuf','💾','Jusqu\'à 1 050 Mo/s, format de poche.'],['Ventilateurs 120 mm ARGB (x3)',34,22,'Composants','Neuf','🌀','Pack de 3 avec contrôleur, câblage simplifié.'],['RTX 3060 12 Go (occasion garantie)',229,3,'Composants','Reconditionné','🎮','Testée 24 h, pâte thermique renouvelée, garantie 12 mois.'],['Casque gaming stéréo',79,10,'Audio','Neuf','🎧'],['Batterie externe 20 000 mAh',39,25,'Accessoires','Neuf','🔋']].map((p,i)=>({id:i+1,title:p[0],price:p[1],stock:p[2],cat:p[3],state:p[4],emoji:p[5],desc:p[6]||'',img:''}));
+const d=k=>new Date(Date.now()-k*864e5).toISOString().slice(0,10);
+const orders=[['Camille Martin','iPhone 14 – Écran OLED / LCD [Qualité originale]',199,'attente',0,''],['Yanis Benali','Galaxy S23 – Batterie [Compatible]',40,'cours',1,''],['Sophie Leroy','Galaxy S24 – Connecteur de charge',55,'pret',2,''],['Julien Roux','PC sur mesure (8 pièces)',1899,'cours',1,'Ryzen 7 7800X3D · TUF B650-Plus · 32 Go DDR5 · RTX 4070 Super · 1 To NVMe · Lancool 216 RGB · 850 W · Kraken 280'],['Amine Haddad','PC sur mesure (8 pièces, dont 2 fournies par le client)',640,'attente',0,'Ryzen 5 7600 · MSI B650M Mortar · Corsair 16 Go DDR5 · RTX 3060 12 Go [FOURNI PAR LE CLIENT] · Crucial P3 500 Go · Phanteks G360A · Seasonic 750 W · Thermalright PA120 [FOURNI PAR LE CLIENT]'],['Lina Dubois','iPhone 13 – Désoxydation',30,'termine',5,''],['Paul Moreau','Clavier mécanique sans fil',89,'attente',0,'']].map((o,i)=>({id:i+1,client:o[0],item:o[1],amount:o[2],status:o[3],date:d(o[4]),det:o[5],phone:'06 12 34 56 7'+i}));
+/* cfg : coef = hausse fournisseur globale ; m = marge % par catégorie ; assembly = montage & tests */
+return{repairs,products,orders,parts,cfg:{coef:1,assembly:59,ownFee:15,lab:{cpu:20,mb:35,ram:10,gpu:20,ssd:10,case:25,psu:20,cool:20},auto:true,maxAge:48,feed:'',updated:Date.now(),m:{cpu:8,mb:10,ram:12,gpu:7,ssd:12,case:15,psu:12,cool:15}}}};
+let DB;try{DB=JSON.parse(localStorage.getItem('rp_db2'))}catch(e){}if(!DB||!DB.repairs||!DB.parts||!DB.products||!DB.orders||!DB.cfg)DB=seed();DB.cfg=Object.assign({ownFee:15,lab:{cpu:20,mb:35,ram:10,gpu:20,ssd:10,case:25,psu:20,cool:20},auto:true,maxAge:48,feed:'',updated:Date.now()},DB.cfg);DB.parts.forEach(p=>{if(!p.src)p.src=mkSrc(p.buy);if(!p.hist)p.hist=mkHist(p.buy)});
+const QUAL={compatible:{n:'Compatible',k:'pc',w:6,d:'Pièce aftermarket testée. Le meilleur prix.'},qualite:{n:'Qualité originale',k:'price',w:12,d:'Mêmes performances que l\'origine, fabricant tiers premium.'},original:{n:'Original constructeur',k:'po',w:24,d:'Pièce d\'origine du fabricant. Fidélité maximale.'}};
+const qp=(r,q)=>r[QUAL[q||'qualite'].k];
+const save=()=>{try{localStorage.setItem('rp_db2',JSON.stringify(DB))}catch(e){}};
+const brandOf=dev=>Object.keys(MODELS).find(b=>MODELS[b].some(m=>m[0]===dev))||'Autre';
+const STATUS={attente:'En attente',cours:'En cours de montage / réparation',pret:'Prêt',termine:'Livré'};
+/* Prix de vente = achat × coefficient fournisseur × (1 + marge %) — marge de la pièce, sinon de la catégorie */
+/* Pièces fournies par le client (en mémoire) : identifiant 'own:<catégorie>' */
+const OWN={};const part=id=>String(id).startsWith('own:')?OWN[String(id).slice(4)]:DB.parts.find(p=>p.id==id);
+/* Prix marché : médiane des sources récentes, écarts > 12 % rejetés, sources périmées ignorées (< 2 sources fraîches : prix d'achat manuel) */
+const fresh=p=>(p.src||[]).filter(s=>Date.now()-s.t<DB.cfg.maxAge*36e5&&s.p>0);
+function est(p){const f=fresh(p).map(s=>s.p).sort((a,b)=>a-b);if(f.length<2)return null;const med=f[f.length>>1],ok=f.filter(x=>Math.abs(x-med)/med<=.12);return Math.round(ok.reduce((a,b)=>a+b,0)/ok.length*100)/100}
+const base=p=>(DB.cfg.auto&&est(p))||p.buy;
+const sp=p=>p.own?(DB.cfg.lab[p.cat]??DB.cfg.ownFee):Math.round(base(p)*DB.cfg.coef*(1+(p.mg??DB.cfg.m[p.cat])/100));
+const FFR={ITX:1,mATX:2,ATX:3};
+/* Puissance d'alimentation conseillée : (CPU + GPU + 100 W) × 1,2, arrondie à 50 W */
+const need=c=>{const a=c.cpu&&part(c.cpu),b=c.gpu&&part(c.gpu);return Math.round(((a?a.tdp:0)+(b?b.tdp:0)+100)*1.2/50)*50};
+/* Règles de compatibilité : renvoie [{a,b,msg}] (catégories en conflit) */
+function issues(c){const g=k=>c[k]&&part(c[k]),cpu=g('cpu'),mb=g('mb'),ram=g('ram'),gpu=g('gpu'),cs=g('case'),psu=g('psu'),cl=g('cool'),o=[],add=(a,b,m)=>o.push({a,b,msg:m});
+if(cpu&&mb&&cpu.sock!==mb.sock)add('cpu','mb',`Socket ${cpu.sock} incompatible avec la carte mère (${mb.sock})`);
+if(ram&&mb&&ram.ddr!==mb.ddr)add('ram','mb',`${ram.ddr} incompatible avec la carte mère (${mb.ddr})`);
+if(mb&&cs&&FFR[mb.ff]>FFR[cs.ff])add('mb','case',`Carte mère ${mb.ff} trop grande pour un boîtier ${cs.ff}`);
+if(gpu&&cs&&gpu.len>cs.gpuMax)add('gpu','case',`Carte graphique de ${gpu.len} mm : le boîtier accepte ${cs.gpuMax} mm max`);
+if(cl&&cs&&cl.type==='air'&&cl.h>cs.coolMax)add('cool','case',`Ventirad de ${cl.h} mm : le boîtier accepte ${cs.coolMax} mm max`);
+if(cl&&cs&&cl.type==='aio'&&cl.rad>cs.rad)add('cool','case',`Radiateur ${cl.rad} mm non supporté (max ${cs.rad} mm)`);
+if(psu&&(cpu||gpu)){const r=need(c);if(psu.w<r)add('psu',gpu?'gpu':'cpu',`Alimentation ${psu.w} W < ${r} W conseillés`)}
+return o}
+
+/* ---------- 2. UTILITAIRES ---------- */
+const P={cpu:'<rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/>',phone:'<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>',bat:'<rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/>',zap:'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',drop:'<path d="M12 2s7 7 7 12a7 7 0 0 1-14 0c0-5 7-12 7-12z"/>',cam:'<path d="M4 7h3l2-3h6l2 3h3v13H4z"/><circle cx="12" cy="13" r="3.5"/>',shield:'<path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="m9 12 2 2 4-4"/>',truck:'<path d="M2 6h12v10H2zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',plus:'<path d="M12 5v14M5 12h14"/>',edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',chk:'<path d="m5 12 5 5 9-10"/>',arr:'<path d="M5 12h14m-6-6 6 6-6 6"/>',dash:'<rect x="3" y="3" width="8" height="10" rx="1"/><rect x="13" y="3" width="8" height="6" rx="1"/><rect x="13" y="11" width="8" height="10" rx="1"/><rect x="3" y="15" width="8" height="6" rx="1"/>',wr:'<path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.5 2.5-2.5-.5-.5-2.5z"/>',box:'<path d="M3 7l9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10"/>',list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>'};
+const ic=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const eur=n=>Number(n).toLocaleString('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+const dur=m=>m>=60?`${Math.floor(m/60)} h${m%60?String(m%60).padStart(2,'0'):''}`:`${m} min`;
+const $=s=>document.querySelector(s);
+const toast=t=>{const e=document.createElement('div');e.className='toast';e.setAttribute('role','status');e.textContent=t;document.body.append(e);setTimeout(()=>e.remove(),2400)};
+const closeM=()=>$('#layer').innerHTML='';
+const modal=html=>{$('#layer').innerHTML=`<div class="modal" data-act="mbg"><div class="card" role="dialog" aria-modal="true">${html}</div></div>`};
+/* ---- Sécurité de l'espace pro ----
+   Mot de passe stocké sous forme de hash PBKDF2-SHA256 (jamais en clair), verrouillage après 5 échecs,
+   session de 15 min d'inactivité, contrôle de session avant chaque action d'administration.
+   Limite : ce contrôle reste côté navigateur. Une vraie protection exige une authentification serveur (voir architecture). */
+const DEF='f5bbcf1819bd161480feb5ca8ab75b3967319c2e5d4cb13583951908fe768e4a';
+const KDF=async(pw,u)=>{const enc=new TextEncoder(),k=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveBits']),b=await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:enc.encode(u+'|kore-tech'),iterations:120000},k,256);return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')};
+let CRED;try{CRED=JSON.parse(localStorage.getItem('kt_cred'))}catch(e){}if(!CRED||!CRED.u||!CRED.h)CRED={u:'noman',h:DEF};
+const isAuth=()=>{try{return Date.now()<+sessionStorage.getItem('kt_exp')}catch(e){return false}};
+const touch=()=>{try{sessionStorage.setItem('kt_exp',Date.now()+15*6e4)}catch(e){}};
+const lockLeft=()=>{try{return Math.max(0,(+localStorage.getItem('kt_lock')||0)-Date.now())}catch(e){return 0}};
+async function doLogin(){const w=lockLeft();if(w)return toast(`Trop d'essais. Réessayez dans ${Math.ceil(w/1000)} s.`);const u=$('#u').value.trim(),p=$('#pw').value;let ok=false;
+try{const h=await KDF(p,u);ok=u===CRED.u&&h===CRED.h}catch(e){return toast('Connexion sécurisée indisponible sur ce navigateur.')}
+if(ok){try{localStorage.removeItem('kt_fail')}catch(e){}touch();render()}else{try{const f=(+localStorage.getItem('kt_fail')||0)+1;localStorage.setItem('kt_fail',f);if(f>=5)localStorage.setItem('kt_lock',Date.now()+Math.min(f-4,10)*6e4)}catch(e){}toast('Identifiant ou mot de passe incorrect.')}}
+const ADM=new Set(['tab','add','edit','del','delo','pcat','pfeed','pimp','psim','psrc','pwd','logout']);
+const ask=(msg,yes)=>{modal(`<h3 style="margin-bottom:8px">Confirmer la suppression</h3><p class="mut" style="margin-bottom:16px">${esc(msg)}</p><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" data-act="mbg2">Annuler</button><button class="btn" id="yes" style="background:var(--bad);border-color:var(--bad);color:#fff">Supprimer</button></div>`);$('#yes').onclick=()=>{closeM();if(!isAuth())return render();yes()}};
+const pwdForm=()=>form('Changer le mot de passe',[{k:'cur',l:'Mot de passe actuel',t:'password',req:1},{k:'n1',l:'Nouveau mot de passe (8 caractères minimum)',t:'password',req:1},{k:'n2',l:'Confirmer le nouveau mot de passe',t:'password',req:1}],{},async o=>{try{if(await KDF(o.cur,CRED.u)!==CRED.h)return toast('Mot de passe actuel incorrect.');if(o.n1.length<8||o.n1!==o.n2)return toast('8 caractères minimum, deux saisies identiques.');CRED={u:CRED.u,h:await KDF(o.n1,CRED.u)};localStorage.setItem('kt_cred',JSON.stringify(CRED));toast('Mot de passe modifié.');render()}catch(e){toast('Échec du changement de mot de passe.')}});
+/* Formulaire modal générique : fields=[{k,l,t,o}] */
+function form(title,fields,v,onSave){modal(`<h3 style="margin-bottom:16px">${title}</h3><div id="f">${fields.map(f=>`<div class="fld"><label>${f.l}</label>${f.t==='select'?`<select data-k="${f.k}">${f.o.map(o=>`<option ${o==v[f.k]?'selected':''}>${o}</option>`)}</select>`:f.t==='textarea'?`<textarea rows="3" data-k="${f.k}">${esc(v[f.k])}</textarea>`:f.t==='file'?`<input type="file" accept="image/*" data-k="${f.k}">`:`<input type="${f.t||'text'}" data-k="${f.k}" value="${esc(v[f.k])}" ${f.t==='number'?'min="0"':''}>`}</div>`).join('')}</div><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" data-act="mbg2">Annuler</button><button class="btn p" id="ok">Enregistrer</button></div>`);
+$('#ok').onclick=async()=>{const o={...v};for(const f of fields){const el=$(`[data-k="${f.k}"]`);if(f.t==='file'){if(el.files[0]&&el.files[0].size<1.5e6&&el.files[0].type.startsWith('image/'))o[f.k]=await new Promise(r=>{const fr=new FileReader;fr.onload=()=>r(fr.result);fr.readAsDataURL(el.files[0])})}else{o[f.k]=f.t==='number'?Math.max(0,+el.value||0):el.value.trim().slice(0,200);if(f.req&&!o[f.k])return el.focus();if(f.pat&&!f.pat.test(o[f.k])){el.focus();return toast(f.msg)}}}onSave(o);closeM()}}
+
+/* ---------- 3. VUES CLIENT ---------- */
+const COMMON=[['Écran','Écran OLED / LCD','bat',45,'phone'],['Batterie','Batterie',null,30,'bat'],['Connecteur de charge','Connecteur de charge',null,45,'zap'],['Désoxydation','Désoxydation',null,120,'drop'],['Caméra','Caméra arrière',null,40,'cam']];
+const minPrice=t=>Math.min(...DB.repairs.filter(r=>r.type===t).map(r=>r.pc));
+const home=()=>`<div class="wrap"><section class="hero"><div>
+<span class="pill">${ic('clock')} Diagnostic gratuit en 10 minutes</span>
+<h1 style="margin-top:18px">Réparation express, garantie et transparente.</h1>
+<p class="lead">Smartphones, tablettes et ordinateurs réparés avec des pièces certifiées. Vous voyez le prix avant de décider, sans surprise.</p>
+<a class="btn p lg" href="#/devis">Estimer ma réparation en 3 clics ${ic('arr')}</a></div>
+<div class="ticket" aria-label="Exemple de devis"><div class="mut" style="color:#9AA9CC">Exemple de devis instantané</div>
+<div class="row"><span>iPhone 14</span><b>Écran OLED</b></div><div class="row"><span>Délai</span><b>En 45 minutes</b></div><div class="row"><span>Garantie</span><b>12 mois</b></div>
+<div style="display:flex;justify-content:space-between;align-items:end;padding-top:14px"><span>Tarif TTC</span><span class="big">${eur(DB.repairs.find(r=>r.device==='iPhone 14'&&r.type.startsWith('Écran'))?.price||180)}</span></div></div></section>
+<section class="sec" style="padding-top:24px"><div class="trust">${[['shield','Pièces certifiées'],['chk','Garantie 12 mois'],['truck','Sur place ou par correspondance'],['lock','Paiement sécurisé']].map(t=>`<div>${ic(t[0])}${t[1]}</div>`).join('')}</div></section>
+<section class="sec" style="padding-top:8px"><div class="bnr"><div><h2>Votre PC sur mesure, monté et testé chez nous.</h2><p style="margin-top:10px;opacity:.8">Composant par composant, compatibilité vérifiée et aperçu 3D en direct.</p></div><a class="btn p lg" href="#/pc">Configurer mon PC ${ic('arr')}</a></div><h2>Les réparations les plus courantes</h2><p class="mut" style="margin:8px 0 24px">Prix indicatifs, confirmés instantanément dans le devis.</p>
+<div class="grid g5">${COMMON.map(c=>`<a class="card" href="#/devis"><div class="ico">${ic(c[4])}</div><h3 style="margin:14px 0 4px">${c[0]}</h3><p class="mut">À partir de <b style="color:var(--ink)">${eur(minPrice(c[1]))}</b></p><p class="pill" style="margin-top:10px">${ic('clock')} ${c[3]>=120?'Dans la journée':`En ${c[3]} minutes chrono`}</p></a>`).join('')}</div></section></div>`;
+
+let WZ={b:null,m:null,r:null};
+const devis=()=>{const s=!WZ.b?1:!WZ.m?2:!WZ.r?3:4;
+const head=`<div class="steps">${[1,2,3,4].map(i=>`<i class="${i<=s?'on':''}"></i>`).join('')}</div>`;
+let body='';
+if(s===1)body=`<h2>Quelle est la marque ?</h2><div class="grid g3" style="margin-top:20px">${[...new Set(DB.repairs.map(r=>brandOf(r.device)))].map(b=>`<button class="card opt" data-act="wb" data-v="${esc(b)}"><span class="ltr">${esc(b[0])}</span><b>${esc(b)}</b></button>`).join('')}</div>`;
+if(s===2)body=`<h2>Quel modèle ?</h2><div class="tools" style="margin-top:16px"><input type="search" id="mq" placeholder="Rechercher un modèle" value="${esc(WZ.mq)}" aria-label="Rechercher un modèle"></div><div class="grid g3">${[...new Set(DB.repairs.map(r=>r.device))].filter(d=>brandOf(d)===WZ.b&&d.toLowerCase().includes((WZ.mq||'').toLowerCase())).map(m=>`<button class="card opt" data-act="wm" data-v="${esc(m)}">${ic('phone')}<b>${esc(m)}</b></button>`).join('')}</div>`;
+if(s===3)body=`<h2>Quelle est la panne ?</h2><div class="grid g3" style="margin-top:20px">${DB.repairs.filter(r=>r.device===WZ.m).map(r=>`<button class="card opt" data-act="wr" data-v="${r.id}"><div><b>${esc(r.type)}</b><small>${esc(r.desc)}</small></div><span class="pr">dès ${eur(r.pc)}</span></button>`).join('')||'<p class="mut">Aucune prestation pour ce modèle.</p>'}</div>`;
+if(s===4){const r=DB.repairs.find(x=>x.id==WZ.r),q=WZ.q||'qualite',Q=QUAL[q];body=`<h2>Choisissez votre pièce</h2><div class="grid g3" role="radiogroup" aria-label="Qualité de la pièce" style="margin:20px 0">${Object.keys(QUAL).map(k=>`<button class="card opt ${k===q?'res':''}" role="radio" aria-checked="${k===q}" data-act="wq" data-v="${k}" style="flex-wrap:wrap"><div><b>${QUAL[k].n}</b><small>${QUAL[k].d}</small><span class="pill" style="margin-top:8px">${ic('shield')} Garantie ${QUAL[k].w} mois</span></div><span class="pr">${eur(qp(r,k))}</span></button>`).join('')}</div>
+<div class="card res" style="max-width:560px"><span class="pill">${esc(WZ.b)} · ${esc(r.device)}</span><h3 style="margin:12px 0 4px;font-size:1.4rem">${esc(r.type)} – ${Q.n}</h3><p class="mut">${esc(r.desc)}</p><div class="price" style="margin:16px 0 4px">${eur(qp(r,q))}</div><p>${ic('clock')} Intervention : <b>${dur(r.time)}</b> · ${ic('shield')} Garantie <b>${Q.w} mois</b></p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px"><button class="btn p lg" data-act="book" data-v="${r.id}">Réserver un rendez-vous</button><button class="btn lg" data-act="book" data-v="${r.id}" data-mail="1">Commander par correspondance</button></div></div>`}
+return`<div class="wrap sec" style="max-width:860px"><a href="#/devis" data-act="wz0" class="mut" style="display:${s>1?'inline-block':'none'};margin-bottom:12px">← Recommencer</a>${head}${body}</div>`};
+
+let SH={q:'',c:'Toutes',s:'Tous'};
+const shop=()=>{const cats=['Toutes',...new Set(DB.products.map(p=>p.cat))];
+const list=DB.products.filter(p=>(SH.c==='Toutes'||p.cat===SH.c)&&(SH.s==='Tous'||p.state===SH.s)&&p.title.toLowerCase().includes(SH.q.toLowerCase()));
+return`<div class="wrap sec"><h2>Boutique</h2><p class="mut" style="margin:8px 0 20px">Accessoires et appareils reconditionnés, testés et garantis.</p>
+<div class="tools"><input type="search" id="q" placeholder="Rechercher un produit" value="${esc(SH.q)}" aria-label="Rechercher"><select data-f="c" aria-label="Catégorie">${cats.map(c=>`<option ${c===SH.c?'selected':''}>${c}</option>`)}</select><select data-f="s" aria-label="État">${['Tous','Neuf','Reconditionné'].map(c=>`<option ${c===SH.s?'selected':''}>${c}</option>`)}</select></div>
+<div class="grid g3">${list.map(p=>`<article class="card prod" data-act="pd" data-v="${p.id}" tabindex="0"><div class="img">${/^data:image\//.test(p.img||'')?`<img src="${esc(p.img)}" alt="">`:esc(p.emoji||'📦')}</div><span class="tag t-${p.state}">${p.state}</span><h3>${esc(p.title)}</h3><p class="mut">${p.stock>0?`${p.stock} en stock`:'Rupture de stock'}</p><div class="pr">${eur(p.price)}</div></article>`).join('')||'<p class="mut">Aucun produit ne correspond. Modifiez vos filtres.</p>'}</div></div>`};
+const prodModal=id=>{const p=DB.products.find(x=>x.id==id);modal(`<div class="prod"><div class="img">${/^data:image\//.test(p.img||'')?`<img src="${esc(p.img)}" alt="">`:esc(p.emoji||'📦')}</div><span class="tag t-${p.state}">${p.state}</span><h2 style="font-size:1.5rem">${esc(p.title)}</h2><p class="mut">Catégorie : ${esc(p.cat)} · ${p.stock} en stock · Garantie 12 mois · Paiement sécurisé</p><div class="pr">${eur(p.price)}</div></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px"><button class="btn" data-act="mbg2">Fermer</button><button class="btn p" data-act="buy" data-v="${p.id}" ${p.stock<1?'disabled':''}>Commander</button></div>`)};
+/* Formulaire client (RDV / commande) -> crée une demande visible dans le back-office */
+let LASTORD=0;
+const order=(item,amount,det,pid)=>form('Vos coordonnées',[{k:'client',l:'Nom complet',req:1},{k:'phone',l:'Téléphone',t:'tel',req:1,pat:/^[+\d][\d\s.\-]{7,18}$/,msg:'Numéro de téléphone invalide.'}],{},v=>{if(Date.now()-LASTORD<2e4)return toast('Merci de patienter avant un nouvel envoi.');LASTORD=Date.now();if(pid){const pr=DB.products.find(x=>x.id==pid);if(pr&&pr.stock>0)pr.stock--}DB.orders.unshift({id:Date.now(),client:v.client,phone:v.phone,item,amount,det,status:'attente',date:new Date().toISOString().slice(0,10)});save();toast('Demande envoyée. Nous vous rappelons rapidement.')});
+
+/* ---------- 3bis. CONFIGURATEUR PC ---------- */
+let CFG={},ST=0,ALLOWN=false;
+const specs=p=>({cpu:`${p.sock} · ${p.tdp} W`,mb:`${p.sock} · ${p.ddr} · ${p.ff}`,ram:p.ddr,gpu:`${p.len} mm · ${p.tdp} W`,case:`${p.ff} · GPU ≤ ${p.gpuMax} mm · ventirad ≤ ${p.coolMax} mm · radiateur ≤ ${p.rad} mm`,psu:`${p.w} W`,cool:p.type==='air'?`Ventirad ${p.h} mm`:`Watercooling ${p.rad} mm`,ssd:''}[p.cat]);
+/* Un choix est bloqué s'il crée un conflit avec les pièces déjà choisies */
+const bad=(k,p)=>issues({...CFG,[k]:p.id}).filter(i=>i.a===k||i.b===k).map(i=>i.msg);
+const pcView=()=>{const[k,lbl]=CATS[ST],list=DB.parts.filter(p=>p.cat===k),sel=CATS.filter(([c])=>CFG[c]),sum=sel.reduce((a,[c])=>a+sp(part(CFG[c])),0),tot=sum+(sel.length?DB.cfg.assembly:0),full=sel.length===CATS.length;
+return`<div class="wrap sec"><h2>Configurateur PC sur mesure</h2><p class="mut" style="margin:8px 0 20px">Choisissez pièce par pièce, options incompatibles grisées. Tarifs alignés sur le marché, mis à jour le ${new Date(DB.cfg.updated).toLocaleDateString('fr-FR')}. Vous avez déjà une pièce ? Choisissez « Je fournis mon composant ».</p><div class="pcg"><div>
+<div style="margin-bottom:12px"><button class="btn sm ${ALLOWN?'p':''}" data-act="pall">${ALLOWN?'Voir le catalogue':'Je viens avec toutes mes pièces (montage seul)'}</button></div><div class="tabs" role="tablist">${CATS.map(([c,l],i)=>`<button class="tab ${i===ST?'on':''}" data-act="pst" data-v="${i}">${CFG[c]?ic('chk'):''}${l}</button>`).join('')}</div>
+<div class="grid"><button class="card opt ${CFG[k]==='own:'+k?'res':''}" data-act="pown"><div><b>Je fournis mon composant</b><small>${CFG[k]==='own:'+k?esc(OWN[k].name)+' · modifier':'Apportez-le, nous le testons et le montons'}</small></div><span class="pr">pose ${eur(DB.cfg.lab[k])}</span></button>${(ALLOWN?[]:list).map(p=>{const w=bad(k,p),on=CFG[k]==p.id,out=p.stock<1;return`<button class="card opt ${on?'res':''}" data-act="ppick" data-v="${p.id}" ${(w.length||out)&&!on?'disabled':''}><div><b>${esc(p.name)}</b><small>${esc(specs(p))}</small>${w.length?`<small style="color:var(--bad)">${esc(w[0])}</small>`:out?'<small>Rupture de stock</small>':''}</div><span class="pr">${eur(sp(p))}</span></button>`}).join('')}</div>
+<div style="display:flex;justify-content:space-between;margin-top:18px"><button class="btn" data-act="ppv" ${ST?'':'disabled'}>Précédent</button><button class="btn p" data-act="pnx" ${ST<7?'':'disabled'}>Suivant</button></div></div>
+<aside class="card pcs"><div id="c3d" class="c3d"></div><p class="mut" style="font-size:.82rem;margin-bottom:10px">Glissez pour faire pivoter l'aperçu.</p>
+${CATS.map(([c,l])=>{const p=CFG[c]&&part(CFG[c]);return`<div class="sumr"><span><span class="mut">${l}</span><br>${p?esc(p.name)+(p.own?' <small class="mut">(fourni par vous · pose et test)</small>':''):'<span class="mut">Non choisi</span>'}</span><span style="text-align:right;white-space:nowrap">${p?`${eur(sp(p))}<br><button class="btn sm" data-act="prm" data-v="${c}" aria-label="Retirer ${l}">${ic('trash')}</button>`:'—'}</span></div>`}).join('')}
+${sel.length?`<div class="sumr"><span>Montage, câblage et tests</span><span>${eur(DB.cfg.assembly)}</span></div>`:''}
+${CFG.cpu||CFG.gpu?`<p class="warn">Alimentation conseillée : ${need(CFG)} W minimum.</p>`:''}
+<div style="display:flex;justify-content:space-between;align-items:end;margin:14px 0"><span>Total TTC</span><b style="font:800 2rem 'Bricolage Grotesque'">${eur(tot)}</b></div>
+<button class="btn p lg" style="width:100%" data-act="pvalid" ${full?'':'disabled'}>${full?'Valider ma configuration':`Encore ${8-sel.length} composant${8-sel.length>1?'s':''} à choisir`}</button></aside></div></div>`};
+
+/* ---------- 3ter. APERÇU 3D (Three.js r128) — reconstruit à chaque choix ---------- */
+let R3,S3,C3,G3,RY=.6,dragX=null;
+function init3d(){if(R3||!window.THREE)return;const T=THREE;R3=new T.WebGLRenderer({antialias:true});R3.setPixelRatio(Math.min(devicePixelRatio,2));R3.setClearColor(0x0B1020);S3=new T.Scene();C3=new T.PerspectiveCamera(35,1,.1,50);C3.position.set(0,.3,8.5);
+S3.add(new T.AmbientLight(0xffffff,.7));const dl=new T.DirectionalLight(0xffffff,.8);dl.position.set(3,4,6);S3.add(dl);G3=new T.Group();S3.add(G3);
+const el=R3.domElement;el.style.touchAction='pan-y';el.onpointerdown=e=>{dragX=e.clientX;el.setPointerCapture(e.pointerId)};el.onpointermove=e=>{if(dragX!=null){RY+=(e.clientX-dragX)*.012;dragX=e.clientX}};el.onpointerup=()=>dragX=null;
+(function L(){requestAnimationFrame(L);if(!el.isConnected)return;if(dragX==null)RY+=.003;G3.rotation.y=RY;(G3.userData.fans||[]).forEach(f=>f.rotation.z+=.06);R3.render(S3,C3)})()}
+function build3d(){if(!R3)return;const T=THREE;while(G3.children.length){G3.remove(G3.children[0])}const FANS=G3.userData.fans=[];
+const g=k=>CFG[k]&&part(CFG[k]),cs=g('case'),mb=g('mb'),gpu=g('gpu'),cl=g('cool'),ram=g('ram'),psu=g('psu'),cpu=g('cpu'),ssd=g('ssd');
+const col=cs?cs.rgb:'#1F5BFF',M=(c,o)=>new T.MeshStandardMaterial(Object.assign({color:c,roughness:.5,metalness:.4},o||{})),E=c=>new T.MeshBasicMaterial({color:c});
+const mk=(w,h,d,m)=>new T.Mesh(new T.BoxGeometry(w,h,d),m),bx=(w,h,d,m,x,y,z)=>{const b=mk(w,h,d,m);b.position.set(x,y,z);G3.add(b);return b};
+const fan=(r,c)=>{const f=new T.Group();f.add(new T.Mesh(new T.TorusGeometry(r,.03,8,24),E(c)));for(let i=0;i<5;i++){const a=i*1.2566,b=mk(r*.85,.07,.02,M('#2a3150'));b.rotation.z=a;b.position.set(Math.cos(a)*r*.42,Math.sin(a)*r*.42,0);f.add(b)}FANS.push(f);return f};
+const[W,H,D]={ATX:[3,3.6,1.6],mATX:[2.6,3,1.4],ITX:[1.9,2.6,1.2]}[cs?cs.ff:'ATX'];
+/* Boîtier : arêtes colorées, vitre latérale, fond sombre, ventilateurs RGB en façade */
+G3.add(new T.LineSegments(new T.EdgesGeometry(new T.BoxGeometry(W,H,D)),new T.LineBasicMaterial({color:col})));
+bx(W,H,.02,M('#88aaff',{transparent:true,opacity:.07}),0,0,D/2);bx(W,H,.04,M('#0f1530'),0,0,-D/2);
+if(cs){const n=H>3.2?3:2;for(let i=0;i<n;i++){const pv=new T.Group(),f=fan(Math.min(.4,D/2-.1),col);pv.add(f);pv.rotation.y=Math.PI/2;pv.position.set(-W/2+.08,(i-(n-1)/2)*(H*.3),.0);G3.add(pv)}}
+if(psu)bx(W-.3,.5,D*.85,M('#151a30'),0,-H/2+.32,-.05);
+const mm={ATX:2.2,mATX:1.8,ITX:1.3}[mb?mb.ff:'ATX'],mx=W/2-mm/2-.15,my=H/2-mm/2-.15,z0=-D/2+.06;
+if(mb){bx(mm,mm,.05,M('#1a2240'),mx,my,z0);bx(.5,.12,.08,M('#555d7a'),mx,my-mm*.12,z0+.06)}
+if(cpu)bx(.32,.32,.06,M('#c9cfe0'),mx,my+mm*.15,z0+.06);
+if(cl){const cx=mx,cy=my+mm*.15;if(cl.type==='air'){const hz=cl.h/180*D*.55;bx(.75,.75,hz,M('#9aa3bd'),cx,cy,z0+.06+hz/2);const f=fan(.3,col);f.position.set(cx,cy,z0+.06+hz+.01);G3.add(f)}
+else{const pm=new T.Mesh(new T.CylinderGeometry(.22,.22,.16,20),M('#1b2140'));pm.rotation.x=Math.PI/2;pm.position.set(cx,cy,z0+.14);G3.add(pm);const rw=cl.rad/240*1.3;bx(rw,.2,.5,M('#222a48'),0,H/2-.18,-.05);for(let i=0;i<cl.rad/120;i++){const pv=new T.Group(),f=fan(.22,col);pv.add(f);pv.rotation.x=Math.PI/2;pv.position.set((i-(cl.rad/120-1)/2)*.46,H/2-.3,-.05);G3.add(pv)}}}
+if(ram)for(let i=0;i<2;i++){const x=mx+mm*.24+i*.13,y=my+mm*.12;bx(.07,.8,.2,M('#20284a'),x,y,z0+.14);bx(.075,.8,.03,E(col),x,y,z0+.25)}
+if(gpu){const L=gpu.len/360*mm*.95,x=mx+mm/2-L/2-.08,y=my-mm*.2;bx(L,.75,.25,M('#10142a'),x,y,z0+.3);bx(L,.04,.27,E(gpu.rgb),x,y+.39,z0+.3);const n=L>1.6?3:2;for(let i=0;i<n;i++){const f=fan(.25,gpu.rgb);f.position.set(x-L/2+L*(i+.5)/n,y,z0+.44);G3.add(f)}}
+if(ssd)bx(.6,.07,.4,M('#3a4263'),-W/2+.6,-H/2+.75,-.3)}
+function mount3d(){const c=$('#c3d');if(!c)return;init3d();if(!R3){c.innerHTML='<p class="mut" style="padding:20px">Aperçu 3D indisponible sur cet appareil.</p>';return}c.append(R3.domElement);const w=c.clientWidth||320;R3.setSize(w,w);build3d()}
+
+/* ---------- 4. BACK-OFFICE ---------- */
+let AD={tab:'dash'};
+const login=()=>`<div class="wrap sec" style="max-width:420px"><div class="card"><h2 style="font-size:1.6rem">Espace professionnel</h2><p class="mut" style="margin:8px 0 18px">Connectez-vous pour gérer l'activité.</p><div class="fld"><label>Identifiant</label><input id="u" autocomplete="username"></div><div class="fld"><label>Mot de passe</label><input id="pw" type="password" autocomplete="current-password"></div><button class="btn p" style="width:100%" data-act="login">Se connecter</button></div></div>`;
+const badge=s=>`<span class="tag s-${s}">${STATUS[s]}</span>`;
+const dash=()=>{const c=k=>DB.orders.filter(o=>o.status===k).length,max=Math.max(1,...Object.keys(STATUS).map(c));
+const ca=DB.orders.filter(o=>o.status==='termine').reduce((a,o)=>a+o.amount,0);
+return`<div class="grid g5">${[['En attente',c('attente')],['En cours',c('cours')],['Prêts à retirer',c('pret')],['CA encaissé',eur(ca)],['Avec pièces fournies',DB.orders.filter(o=>(o.det||'').includes('FOURNI')).length]].map(k=>`<div class="card kpi"><span class="mut">${k[0]}</span><b>${k[1]}</b></div>`).join('')}</div>
+<div class="grid g3" style="margin-top:16px"><div class="card bars"><h3>Répartition</h3>${Object.keys(STATUS).map(k=>`<div><span>${STATUS[k]}</span><em style="width:${c(k)/max*100}%;min-width:6px"></em><b>${c(k)}</b></div>`).join('')}</div>
+<div class="card"><h3>Plus fortes variations (7 j)</h3>${[...DB.parts].sort((a,b)=>Math.abs(trend(b))-Math.abs(trend(a))).slice(0,4).map(x=>`<p style="margin-top:10px">${esc(x.name)} <b style="color:${trend(x)>=0?'var(--bad)':'var(--ok)'}">${trend(x)>=0?'+':''}${trend(x).toFixed(1)} %</b></p>`).join('')}</div><div class="card"><h3>Stock faible</h3>${[...DB.products.map(p=>({title:p.title,stock:p.stock})),...DB.parts.map(p=>({title:p.name,stock:p.stock}))].filter(p=>p.stock<5).map(p=>`<p style="margin-top:10px">${esc(p.title)} <span class="pill" style="background:#FFF1D6;color:#8A5A00">${p.stock} restant${p.stock>1?'s':''}</span></p>`).join('')||'<p class="mut">Tout est bien approvisionné.</p>'}</div></div>
+<div class="card" style="margin-top:16px"><h3 style="margin-bottom:8px">Dernières demandes</h3>${ordersTbl(DB.orders.slice(0,4),true)}</div>`};
+const ordersTbl=(l,ro)=>`<div class="tbl"><table><tr><th>Date</th><th>Client</th><th>Demande</th><th>Montant</th><th>Statut</th>${ro?'':'<th></th>'}</tr>${l.map(o=>`<tr><td>${o.date}</td><td>${esc(o.client)}<br><small class="mut">${esc(o.phone)}</small></td><td>${esc(o.item)}${o.det?`<br><small class="mut">${esc(o.det)}</small>`:''}</td><td>${eur(o.amount)}</td><td>${ro?badge(o.status):`<select data-st="${o.id}" aria-label="Statut">${Object.keys(STATUS).map(k=>`<option value="${k}" ${k===o.status?'selected':''}>${STATUS[k]}</option>`)}</select>`}</td>${ro?'':`<td><button class="btn sm d" data-act="delo" data-v="${o.id}" aria-label="Supprimer la demande">${ic('trash')}</button></td>`}</tr>`).join('')}</table></div>`;
+const crud=(k)=>{const R=k==='repairs';const L=R?DB.repairs.filter(x=>(x.device+' '+x.type).toLowerCase().includes((AD.rq||'').toLowerCase())).slice(0,80):DB[k];return`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><h3>${R?'Prestations de réparation':'Produits de la boutique'} (${L.length})</h3>${R?`<input type="search" id="aq" placeholder="Filtrer (80 lignes max)" value="${esc(AD.rq)}" style="max-width:240px" aria-label="Filtrer">`:''}<button class="btn p" data-act="add">${ic('plus')} Ajouter</button></div>
+<div class="card tbl"><table><tr>${R?'<th>Appareil</th><th>Panne</th><th>Compatible</th><th>Qualité orig.</th><th>Original</th><th>Durée</th>':'<th>Produit</th><th>Catégorie</th><th>État</th><th>Prix</th><th>Stock</th>'}<th></th></tr>${L.map(x=>`<tr>${R?`<td>${esc(x.device)}</td><td>${esc(x.type)}</td><td>${eur(x.pc)}</td><td>${eur(x.price)}</td><td>${eur(x.po)}</td><td>${dur(x.time)}</td>`:`<td>${esc(x.title)}</td><td>${esc(x.cat)}</td><td><span class="tag t-${x.state}">${x.state}</span></td><td>${eur(x.price)}</td><td>${x.stock}</td>`}<td style="white-space:nowrap"><button class="btn sm" data-act="edit" data-v="${x.id}" aria-label="Modifier">${ic('edit')}</button> <button class="btn sm d" data-act="del" data-v="${x.id}" aria-label="Supprimer">${ic('trash')}</button></td></tr>`).join('')}</table></div>`};
+const FR={repairs:[{k:'device',l:'Nom de l\'appareil',req:1},{k:'type',l:'Type de panne',req:1},{k:'pc',l:'Prix – pièce compatible (€)',t:'number'},{k:'price',l:'Prix – qualité originale (€)',t:'number'},{k:'po',l:'Prix – original constructeur (€)',t:'number'},{k:'time',l:'Temps estimé (minutes)',t:'number'},{k:'desc',l:'Description',t:'textarea'}],products:[{k:'title',l:'Titre',req:1},{k:'price',l:'Prix (€)',t:'number'},{k:'stock',l:'Stock',t:'number'},{k:'cat',l:'Catégorie',req:1},{k:'state',l:'État',t:'select',o:['Neuf','Reconditionné']},{k:'desc',l:'Description',t:'textarea'},{k:'img',l:'Image',t:'file'}],
+get parts(){const c=AD.pc||'cpu';return[{k:'name',l:'Nom',req:1},{k:'buy',l:"Prix d'achat (€)",t:'number'},{k:'mg',l:'Marge % (vide = marge de la catégorie)'},{k:'stock',l:'Stock',t:'number'},...pf(c)]}};
+/* Import de prix marché : [{name, source, price}] — point d'entrée commun au CSV collé et au flux JSON */
+function importPrices(rows){let n=0;const T=new Set();rows.forEach(r=>{const q=String(r.name).trim().toLowerCase(),x=DB.parts.find(y=>q&&(y.name.toLowerCase().includes(q)||q.includes(y.name.toLowerCase()))),v=+r.price;if(!x||!(v>0&&v<1e5))return;const s=x.src.find(y=>y.n===r.source);if(s){s.p=v;s.t=Date.now()}else x.src.push({n:r.source,p:v,t:Date.now()});T.add(x);n++});T.forEach(snap);DB.cfg.updated=Date.now();save();return n}
+/* Flux marchands : un ou plusieurs JSON [{name,source?,price}] (un par ligne), relus toutes les 5 min. Chaque flux = un adaptateur côté serveur. */
+async function pullFeed(q){const us=(DB.cfg.feed||'').split('\n').map(x=>x.trim()).filter(u=>/^https:\/\//.test(u));if(!us.length){q||toast("Renseignez au moins une URL de flux.");return}let n=0,ko=0;for(const u of us){try{const j=await(await fetch(u)).json();n+=importPrices(j.map(r=>({source:new URL(u).host,...r})))}catch(e){ko++}}if(!q)toast(n+" prix mis à jour"+(ko?` · ${ko} flux injoignable(s)`:""));if(n)render()}
+const spark=x=>{const v=x.hist.map(h=>h.e),mn=Math.min(...v),mx=Math.max(...v);return`<svg width="64" height="22" viewBox="0 0 64 22" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="1.6" points="${v.map((y,i)=>`${(i/(v.length-1)*64).toFixed(1)},${(20-(y-mn)/((mx-mn)||1)*18).toFixed(1)}`).join(' ')}"/></svg>`};
+const trd=x=>{const t=trend(x);return`<span style="color:${t>=0?'var(--bad)':'var(--ok)'};white-space:nowrap">${spark(x)} ${t>=0?'+':''}${t.toFixed(1)} %</span>`};
+const mkt=x=>{const e=est(x),f=fresh(x);if(e==null)return'<small style="color:var(--warn)">à actualiser</small>';const d=(e-x.buy)/x.buy*100;return`${eur(e)} <small class="mut">${f.length} src · ${d>=0?'+':''}${d.toFixed(1)} %</small>`};
+const importModal=()=>{modal(`<h3 style="margin-bottom:8px">Importer des prix marché</h3><p class="mut" style="margin-bottom:10px">Une ligne par prix : <b>pièce;source;prix</b>. Exemple : RTX 4070 Super;Boutique C;612,90</p><textarea id="csv" rows="8"></textarea><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="btn" data-act="mbg2">Annuler</button><button class="btn p" id="okcsv">Importer</button></div>`);$('#okcsv').onclick=()=>{if(!isAuth())return;const n=importPrices($('#csv').value.split('\n').map(l=>l.split(';')).filter(a=>a.length>=3).map(a=>({name:a[0],source:a[1].trim(),price:a[2].replace(',','.')})));closeM();toast(n+' prix importés');render()}};
+const srcModal=id=>{const x=part(id);modal(`<h3>${esc(x.name)}</h3><p class="mut" style="margin:6px 0 14px">Estimation : ${est(x)?eur(est(x)):'sources périmées'}</p>${x.src.map((s,i)=>`<div class="fld"><label>${esc(s.n)} <small class="mut">(il y a ${Math.round((Date.now()-s.t)/36e5)} h)</small></label><input type="number" step="0.01" data-sp="${i}" value="${s.p}"></div>`).join('')}<div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn" data-act="mbg2">Annuler</button><button class="btn p" id="oksp">Enregistrer</button></div>`);$('#oksp').onclick=()=>{if(!isAuth())return;document.querySelectorAll('[data-sp]').forEach(el=>{const s=x.src[el.dataset.sp];if(+el.value!==s.p){s.p=+el.value;s.t=Date.now()}});snap(x);DB.cfg.updated=Date.now();save();closeM();toast('Prix marché enregistrés');render()}};
+const fld=(l,k,v,st)=>`<div><label class="mut" style="font-size:.85rem">${l}</label><input type="number" step="${st||1}" min="0" value="${v}" data-set="${k}"></div>`;
+/* Composants PC : coefficient fournisseur, marges par catégorie, prix d'achat et stocks */
+const partsAdmin=()=>{const c=AD.pc||'cpu',L=DB.parts.filter(p=>p.cat===c);return`<div class="card" style="margin-bottom:16px"><h3>Tarification</h3><p class="mut" style="margin-top:4px">Prix de vente = prix d'achat × coefficient fournisseur × (1 + marge %). Une hausse fournisseur de 5 % : coefficient 1,05.</p><div class="grid g5" style="margin-top:12px">${fld('Coefficient fournisseur','coef',DB.cfg.coef,.01)}${fld('Montage et tests (€)','assembly',DB.cfg.assembly)}${CATS.map(([k,l])=>fld('Pose pièce fournie : '+l+' (€)','lab.'+k,DB.cfg.lab[k])).join('')}${CATS.map(([k,l])=>fld('Marge '+l+' (%)','m.'+k,DB.cfg.m[k])).join('')}</div></div>
+<div class="card" style="margin-bottom:16px"><h3>Prix du marché</h3><p class="mut" style="margin-top:4px">Plusieurs sources par pièce : l'estimation écarte les valeurs aberrantes (±12 % de la médiane) et ignore les prix trop anciens. Dernière mise à jour : ${new Date(DB.cfg.updated).toLocaleString('fr-FR')}.</p><div class="grid g5" style="margin:12px 0"><label style="display:flex;gap:8px;align-items:center;font-weight:600"><input type="checkbox" style="width:auto;min-height:0" data-set="auto" ${DB.cfg.auto?'checked':''}> Vendre au prix marché</label>${fld('Péremption des prix (heures)','maxAge',DB.cfg.maxAge)}<div style="grid-column:span 2"><label class="mut" style="font-size:.85rem">Flux de prix marchands (JSON, un par ligne)</label><textarea rows="2" data-set="feed" placeholder="Une URL de flux JSON par ligne">${esc(DB.cfg.feed)}</textarea></div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn p" data-act="pfeed">Actualiser depuis le flux</button><button class="btn" data-act="pimp">Importer des prix (CSV)</button><button class="btn" data-act="psim">Simuler une variation (démo)</button></div></div>
+<div class="tabs">${CATS.map(([k,l])=>`<button class="tab ${k===c?'on':''}" data-act="pcat" data-v="${k}">${l}</button>`).join('')}</div>
+<div style="display:flex;justify-content:space-between;margin-bottom:12px"><h3>${CATS.find(x=>x[0]===c)[1]} (${L.length})</h3><button class="btn p" data-act="add">${ic('plus')} Ajouter</button></div>
+<div class="card tbl"><table><tr><th>Nom</th><th>Achat</th><th>Marché</th><th>Tendance 7 j</th><th>Marge</th><th>Vente</th><th>Stock</th><th>Compatibilité</th><th></th></tr>${L.map(x=>`<tr><td>${esc(x.name)}</td><td>${eur(x.buy)}</td><td>${mkt(x)}</td><td>${trd(x)}</td><td>${x.mg??DB.cfg.m[c]} %${x.mg==null?' <small class="mut">(cat.)</small>':''}</td><td><b>${eur(sp(x))}</b></td><td>${x.stock}</td><td><small class="mut">${esc(specs(x))}</small></td><td style="white-space:nowrap"><button class="btn sm" data-act="psrc" data-v="${x.id}" aria-label="Prix du marché">€</button> <button class="btn sm" data-act="edit" data-v="${x.id}" aria-label="Modifier">${ic('edit')}</button> <button class="btn sm d" data-act="del" data-v="${x.id}" aria-label="Supprimer">${ic('trash')}</button></td></tr>`).join('')}</table></div>`};
+const admin=()=>{if(!isAuth())return login();const T=[['dash','Tableau de bord','dash'],['repairs','Réparations','wr'],['parts','Composants PC','cpu'],['products','Produits','box'],['orders','Demandes','list']];
+return`<div class="wrap adm"><aside><div class="side">${T.map(t=>`<button class="${AD.tab===t[0]?'on':''}" data-act="tab" data-v="${t[0]}">${ic(t[2])}${t[1]}</button>`).join('')}<button data-act="pwd">Mot de passe</button><button data-act="logout">Se déconnecter</button></div></aside><section>${CRED.h===DEF?'<p class="warn" style="margin:0 0 14px">Mot de passe initial encore actif : changez-le avec le bouton « Mot de passe ».</p>':''}${AD.tab==='dash'?dash():AD.tab==='parts'?partsAdmin():AD.tab==='orders'?`<h3 style="margin-bottom:14px">Demandes clients</h3><div class="card">${ordersTbl(DB.orders)}</div>`:crud(AD.tab)}</section></div>`};
+
+/* ---------- 5. ROUTEUR + ÉVÉNEMENTS ---------- */
+const VIEWS={'':home,devis,pc:pcView,boutique:shop,admin};
+function render(){const r=(location.hash.replace('#/','')||'').split('/')[0];$('#app').innerHTML=(VIEWS[r]||home)();document.querySelectorAll('nav.m a[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===r));$('#nav').classList.remove('open');if(r==='pc')mount3d()}
+addEventListener('hashchange',()=>{scrollTo(0,0);render()});setInterval(()=>pullFeed(1),3e5);
+$('#bg').onclick=()=>$('#nav').classList.toggle('open');
+document.addEventListener('click',e=>{const t=e.target.closest('[data-act]');if(!t)return;const a=t.dataset.act,v=t.dataset.v;if(ADM.has(a)&&a!=='logout'){if(!isAuth()){toast('Session expirée. Reconnectez-vous.');return render()}touch()}
+if(a==='mbg'){if(e.target===t)closeM();return}
+if(a==='mbg2')return closeM();
+if(a==='wb'){WZ={b:v,m:null,r:null}}else if(a==='wm')WZ.m=v;else if(a==='wr'){WZ.r=v;WZ.q='qualite'}else if(a==='wq')WZ.q=v;else if(a==='wz0'){e.preventDefault();WZ={b:null,m:null,r:null}}
+else if(a==='book'){const r=DB.repairs.find(x=>x.id==v);const q=WZ.q||'qualite';return order(`${r.device} – ${r.type} [${QUAL[q].n}]${t.dataset.mail?' (correspondance)':' (rendez-vous)'}`,qp(r,q))}
+else if(a==='pd')return prodModal(v);
+else if(a==='buy'){const p=DB.products.find(x=>x.id==v);closeM();return order(p.title,p.price,'',p.id)}
+else if(a==='login')return doLogin();
+else if(a==='logout'){try{sessionStorage.removeItem('kt_exp')}catch(x){}}else if(a==='pwd')return pwdForm();
+else if(a==='tab')AD.tab=v;else if(a==='pcat')AD.pc=v;else if(a==='pst')ST=+v;else if(a==='pnx')ST=Math.min(7,ST+1);else if(a==='ppv')ST=Math.max(0,ST-1);
+else if(a==='ppick'){const k=CATS[ST][0];if(CFG[k]==v)delete CFG[k];else CFG[k]=+v}else if(a==='prm')delete CFG[v];else if(a==='pall')ALLOWN=!ALLOWN;
+else if(a==='pown'){const k=CATS[ST][0],ex={...DB.parts.find(x=>x.cat===k),...OWN[k],id:'own:'+k,cat:k,own:true,name:OWN[k]?OWN[k].name:'',buy:0,mg:null};return form('Je fournis : '+CATS[ST][1],[{k:'name',l:'Marque et modèle',req:1},...pf(k)],ex,o=>{OWN[k]={...o,own:true};CFG[k]='own:'+k;render()})}
+else if(a==='pfeed')return pullFeed();else if(a==='pimp')return importModal();else if(a==='psrc')return srcModal(v);
+else if(a==='psim'){DB.parts.forEach(p=>p.src.forEach(x=>{x.p=Math.round(x.p*(1+(Math.random()-.45)*.08)*100)/100;x.t=Date.now()}));DB.parts.forEach(snap);DB.cfg.updated=Date.now();save();toast("Variation de marché simulée")}
+else if(a==='pvalid'){const tot=CATS.reduce((x,[c])=>x+sp(part(CFG[c])),DB.cfg.assembly);const n=CATS.filter(([c])=>part(CFG[c]).own).length;return order(`PC sur mesure (8 pièces${n?`, dont ${n} fournie${n>1?'s':''} par le client`:''})`,tot,CATS.map(([c])=>part(CFG[c]).name+(part(CFG[c]).own?' [FOURNI PAR LE CLIENT]':'')).join(' · '))}
+else if(a==='add'||a==='edit'){const k=AD.tab,ex=a==='edit'?DB[k].find(x=>x.id==v):(k==='parts'?{cat:AD.pc||'cpu',buy:0,stock:10,mg:null}:k==='repairs'?{pc:0,price:0,po:0,time:30}:{price:0,stock:0,state:'Neuf',emoji:'📦'});
+return form(a==='add'?'Ajouter':'Modifier',FR[k],ex,o=>{if(!isAuth())return render();if(k==='parts')o.mg=o.mg===''||o.mg==null?null:+o.mg;if(a==='add'){o.id=Date.now();DB[k].unshift(o)}else DB[k]=DB[k].map(x=>x.id==o.id?o:x);save();toast('Enregistré');render()})}
+else if(a==='del')return ask('Supprimer cet élément définitivement ?',()=>{DB[AD.tab]=DB[AD.tab].filter(x=>x.id!=v);save();toast('Élément supprimé');render()});
+else if(a==='delo')return ask('Supprimer cette demande définitivement ?',()=>{DB.orders=DB.orders.filter(o=>o.id!=v);save();toast('Demande supprimée');render()});
+render()});
+const IN={q:v=>SH.q=v,mq:v=>WZ.mq=v,aq:v=>AD.rq=v};
+document.addEventListener('input',e=>{const t=e.target;if(IN[t.id]){IN[t.id](t.value);const p=t.selectionStart;render();const n=$('#'+t.id);n.focus();n.setSelectionRange(p,p)}});
+document.addEventListener('change',e=>{const t=e.target;if((t.dataset.set||t.dataset.st)&&!isAuth())return render();if(t.dataset.f){SH[t.dataset.f]=t.value;render()}if(t.dataset.set){const k=t.dataset.set;if(k.startsWith('m.'))DB.cfg.m[k.slice(2)]=+t.value;else if(k.startsWith('lab.'))DB.cfg.lab[k.slice(4)]=+t.value;else DB.cfg[k]=k==='feed'?t.value.trim():k==='auto'?t.checked:+t.value;save();toast('Tarifs recalculés');render()}if(t.dataset.st){DB.orders.find(o=>o.id==t.dataset.st).status=t.value;save();toast('Statut mis à jour')}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset?.act==='pd')e.target.click();if(e.key==='Escape')closeM();if(e.key==='Enter'&&e.target.id==='pw')doLogin()});
+render();
+</script>
+</body>
+</html>

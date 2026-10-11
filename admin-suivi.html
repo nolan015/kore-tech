@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Kore Tech – Suivi des réparations (admin)</title>
+<style>body{font:15px/1.5 system-ui,sans-serif;margin:0;background:#F5F6F8;color:#0D1424}main{max-width:900px;margin:0 auto;padding:20px}
+.c{background:#fff;border:1px solid #E1E4EB;border-radius:14px;padding:16px;margin:12px 0}input,select,button{font:inherit;min-height:42px;border-radius:10px;border:1px solid #E1E4EB;padding:0 12px}
+button{background:#1F5BFF;color:#fff;border:0;font-weight:700;cursor:pointer}small{color:#5B6478}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}</style></head>
+<body><main><h1>Suivi des réparations</h1>
+<div class="c row"><input id="tk" type="password" placeholder="Jeton d'administration" autocomplete="off" style="flex:1"><button id="go">Charger</button><span id="msg"></span></div>
+<div id="list"></div></main>
+<script>
+const S=['1 · En attente d\'envoi client','2 · Reçu à l\'atelier','3 · Réparation en cours','4 · Réparation terminée','5 · Réexpédié au client'];
+const $=s=>document.querySelector(s),H=()=>({authorization:'Bearer '+$('#tk').value,'content-type':'application/json'});
+const say=t=>$('#msg').textContent=t;
+async function load(){say('…');const r=await fetch('/api/ticket-admin',{headers:H()});if(!r.ok)return say(r.status===401?'Jeton invalide':'Erreur');say('');
+ const L=$('#list');L.textContent='';(await r.json()).forEach(t=>{const d=document.createElement('div');d.className='c';
+  const h=document.createElement('b');h.textContent=t.id+' · '+(t.device||t.item);d.append(h);
+  const s=document.createElement('small');s.textContent=` · ${t.customer.name} · ${t.customer.email} · ${t.carrier} · ${new Date(t.created).toLocaleDateString('fr-FR')}`;d.append(s);
+  const row=document.createElement('div');row.className='row';const sel=document.createElement('select');
+  S.forEach((x,i)=>{const o=new Option(x,i+1);o.selected=i+1===t.step;sel.add(o)});
+  const b=document.createElement('button');b.textContent='Mettre à jour';b.onclick=async()=>{b.disabled=true;
+   const r=await fetch('/api/ticket-admin',{method:'POST',headers:H(),body:JSON.stringify({id:t.id,step:+sel.value})});b.disabled=false;say(r.ok?'Statut mis à jour ✓':'Échec : '+((await r.json()).error||r.status));if(r.ok)load()};
+  row.append(sel,b);d.append(row);L.append(d)})}
+$('#go').onclick=load;
+</script></body></html>
